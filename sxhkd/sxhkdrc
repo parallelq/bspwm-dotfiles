@@ -1,0 +1,48 @@
+# Terminal
+super + Return
+	kitty	
+
+# Rofi
+super + r
+	rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -icon-theme Papirus -show-icons
+
+# Application keybinding
+super + shift + {f,w,e}
+	{thunar,firefox-bin,vim}
+
+# Screenshot
+super + shift + s
+	scrot -s ~/Pictures/1-.png
+
+# Quit/Restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# Close window
+super + c
+	bspc node -c
+
+# Kill window
+super + alt + Escape
+	xkill
+
+# Monocle or Fullscreen
+super + f
+	bspc desktop -l next
+
+# Splitting H V or Cancel
+super + {h,v,q}
+	bspc node -p {east,south,cancel}
+
+# Float or Tile
+super + space
+	bspc node -t "~"{floating,tiled}
+
+# Pseudo Tiled or Tile
+super + {p,t}
+	bspc node -t {pseudo_tiled,tiled}
+
+# Send focused window to another workspace
+super + {_,shift + }{1-8}
+	bspc {desktop -f,node -d} '^{1-8}'
+

@@ -1,0 +1,47 @@
+#!/bin/sh
+
+#---Configuration---#
+
+bspc monitor -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
+
+bspc config border_width 1
+bspc config window_gap 20
+bspc config split_ratio 0.75
+
+bspc config focused_border_color "#d79921"
+bspc config active_border_color "#1d2021"
+
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config paddingless_monocle true
+bspc config single_monocle false
+bspc config focus_follows_pointer true
+
+#---Window---#
+
+bspc rule -r *:*
+
+bspc rule -a kitty state=floating
+bspc rule -a firefox-bin desktop='^2' follow=on focus=on
+bspc rule -a Thunar follow=on focus=on
+
+#---Autostart---#
+
+# Keybinding
+sxhkd &
+
+# Notification
+dunst &
+
+# Polybar
+polybar example &
+
+# Compositor
+compton &
+
+# Cursor fix
+xsetroot -cursor_name left_ptr &
+
+# Wallpaper
+sh $HOME/.fehbg &
+
